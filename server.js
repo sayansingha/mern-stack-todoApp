@@ -5,7 +5,7 @@ const cors = require('cors')
 const path = require('path');
 const mongoose = require('mongoose')
 const todoRoutes = express.Router()
-const PORT= 4000
+const PORT = process.env.PORT || 4000;
 
 let Todo = require('./backend/todo.model.js')
 const mongoUrl = 'mongodb+srv://sayan:fBJZHG8Fq1SncQnG@cluster0.ovm15.mongodb.net/todo?retryWrites=true&w=majority';
