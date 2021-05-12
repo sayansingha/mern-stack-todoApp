@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express()
-const bodyParser=require('body-parser')
+const bodyParser = require('body-parser');
 const cors = require('cors')
 const path = require('path');
 const mongoose = require('mongoose')
@@ -18,6 +18,9 @@ const connection = mongoose.connection
 connection.once('open',()=>{
     console.log("MongoDB database connection succesful!")
 })
+
+app.use(express.json());
+app.use(express.urlencoded());
 
 todoRoutes.route('/').get((req,res)=>{
     Todo.find((err,todos)=>{
@@ -37,6 +40,7 @@ todoRoutes.route('/:id').get((req,res)=>{
 })
 
 todoRoutes.route('/add').post((req,res)=>{
+    console.log(req.body);
     let todo = new Todo(req.body)
     todo.save()
         .then(todo=>{

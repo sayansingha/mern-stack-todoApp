@@ -21,7 +21,7 @@ export default class EditTodo extends Component {
     }
 
     componentDidMount() {
-        axios.get('/todos'+this.props.match.params.id)
+        axios.get('/todos/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     todo_description: response.data.todo_description,
@@ -67,7 +67,7 @@ export default class EditTodo extends Component {
             todo_priority: this.state.todo_priority,
             todo_completed: this.state.todo_completed
         };
-        axios.post('http://localhost:4000/todos/update/'+this.props.match.params.id, obj)
+        axios.post('/todos/update/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
 
         this.props.history.push('/');

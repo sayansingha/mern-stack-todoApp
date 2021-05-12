@@ -22,9 +22,11 @@ export default class TodosList extends Component {
     }
 
     componentDidMount(){
+        console.log("componentDidMount");
         axios.get('/todos')
             .then(response=>{
                 this.setState({todos: response.data}) 
+                console.log(response.data);
             })
             .catch((err)=>{
                 console.log(err)
@@ -32,9 +34,11 @@ export default class TodosList extends Component {
     }
 
     componentDidUpdate(){
+        console.log("componentDidUpdate")
         axios.get('/todos')
             .then(response=>{
                 this.setState({todos: response.data})
+                console.log(response.data);
             })
             .catch((err)=>{
                 console.log(err)
